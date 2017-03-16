@@ -1,4 +1,5 @@
 FROM  debian:jessie
+MAINTAINER Reesey275 <reesey275@gmail.com>
 
 ENV   TS_VERSION=3.0.13.6 \
       TS_FILENAME=teamspeak3-server_linux_amd64 \

@@ -1,10 +1,13 @@
 FROM  debian:jessie
 MAINTAINER Reesey275 <reesey275@gmail.com>
 
-ENV   TS_VERSION=3.0.13.6 \
-      TS_FILENAME=teamspeak3-server_linux_amd64 \
-      TS_USER=teamspeak \
-      TS_HOME=/teamspeak
+ENV   TS_VERSION="3.0.13.6" \
+      TS_FILENAME="teamspeak3-server_linux_amd64" \
+      TS_USER="teamspeak" \
+	  TS_GROUP="teamspeak" \
+      TS_HOME="/teamspeak" \
+	  TS_DATA="$TS_HOME/data" \
+	  TS_PSDATA="/data"
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -23,6 +26,8 @@ RUN   groupadd -r $TS_USER \
       && useradd -r -m \
         -g $TS_USER \
         -d $TS_HOME \
+		-d $TS_DATA \
+		-d $TS_PSDATA \
         $TS_USER
 
 WORKDIR ${TS_HOME}

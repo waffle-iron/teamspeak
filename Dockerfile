@@ -26,7 +26,7 @@ RUN   groupadd -r $TS_USER \
         -d $TS_HOME \
         $TS_USER
 
-WORKDIR ${TS_DATA}
+WORKDIR ${TS_HOME}
 
 RUN  wget "http://dl.4players.de/ts/releases/${TS_VERSION}/${TS_FILENAME}-${TS_VERSION}.tar.bz2" -O ${TS_FILENAME}-${TS_VERSION}.tar.bz2 \
        && tar -xjf "${TS_FILENAME}-${TS_VERSION}.tar.bz2" \

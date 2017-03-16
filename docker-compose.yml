@@ -7,4 +7,4 @@ Teamspeak:
             - "10011:10011"
             - "30033:30033"
         volumes:
-            - /storage/teamspeak:/teamspeak
+            - /storage/teamspeak:/data

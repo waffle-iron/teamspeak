@@ -1,10 +1,10 @@
 Teamspeak:
         restart: always
-        image: asos/teamspeak:latest
-        container_name: teamspeak_latest
+        image: asos/teamspeak:develop
+        container_name: teamspeak
         ports:
             - "9987:9987/udp"
             - "10011:10011"
             - "30033:30033"
         volumes:
-            - /storage/teamspeak:/teamspeak
+            - /storage/teamspeak:/teamspeak/test

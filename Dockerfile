@@ -6,8 +6,8 @@ ENV   TS_VERSION="3.0.13.6" \
       TS_USER="teamspeak" \
 	  TS_GROUP="teamspeak" \
       TS_HOME="/teamspeak" \
-	  TS_DATA="$TS_HOME/files" \
-	  TS_PSDATA="/data"
+	  TS_DATA="/teamspeak/files
+
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -20,14 +20,12 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/asosgaming/docker-teamspeak.git" \
       org.label-schema.vcs-type="Git"
 
-RUN   apt-get update && apt-get install wget mysql-common bzip2 -y \
+RUN   apt-get update && apt-get install wget mysql-common bzip2 nano -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN   groupadd -r $TS_USER \
       && useradd -r -m \
         -g $TS_USER \
         -d $TS_HOME \
-		-d $TS_DATA \
-		-d $TS_PSDATA \
         $TS_USER
 
 WORKDIR ${TS_HOME}
@@ -43,9 +41,11 @@ RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
 
-RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && {$TS_DATA} && {$TS_PSDATA} && chmod +x entrypoint.sh 
+RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh 
 
 USER  ${TS_USER}
+
+VOLUME ["TS_DATA"]
 
 EXPOSE 9987/udp
 EXPOSE 10011

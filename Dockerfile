@@ -4,7 +4,8 @@ MAINTAINER Reesey275 <reesey275@gmail.com>
 ENV   TS_VERSION=3.0.13.6 \
       TS_FILENAME=teamspeak3-server_linux_amd64 \
       TS_USER=teamspeak \
-      TS_HOME=/teamspeak
+      TS_HOME=/teamspeak \
+	  TS_DATA=/teamspeak/data
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -25,7 +26,7 @@ RUN   groupadd -r $TS_USER \
         -d $TS_HOME \
         $TS_USER
 
-WORKDIR ${TS_HOME}
+WORKDIR ${TS_DATA}
 
 RUN  wget "http://dl.4players.de/ts/releases/${TS_VERSION}/${TS_FILENAME}-${TS_VERSION}.tar.bz2" -O ${TS_FILENAME}-${TS_VERSION}.tar.bz2 \
        && tar -xjf "${TS_FILENAME}-${TS_VERSION}.tar.bz2" \

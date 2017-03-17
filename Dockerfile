@@ -22,7 +22,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 
 RUN   apt-get update && apt-get install wget mysql-common bzip2 nano libreadline5 -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN   groupadd -r $TS_USER \
+RUN   groupadd -g 4000 -r "$TS_GROUP" && \
+      useradd -u 4000 -r -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" && \ 
       && useradd -r -m \
         -g $TS_USER \
         -d $TS_HOME \
@@ -41,13 +42,8 @@ RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
 
-RUN chmod 755 entrypoint.sh && \
-    chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && \
-	chmod +x entrypoint.sh \
-	groupadd -g 4000 -r "$TS_GROUP" && \
-	useradd -u 4000 -r -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" && \ 
-	chown -fR "$TS3_USER":"$SINUS_GROUP" "$TS3_HOME" "$TS3_DATA"
-
+RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh \
+	
 USER  ${TS_USER}
 
 VOLUME {"TS_DATA"}

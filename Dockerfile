@@ -39,7 +39,7 @@ RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
 
-RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh \
+RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh 
 	
 USER  ${TS_USER}
 

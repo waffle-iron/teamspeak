@@ -24,7 +24,7 @@ RUN   apt-get update && apt-get install wget mysql-common bzip2 nano libreadline
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN   groupadd -g 4000 -r "$TS_GROUP" && \
       useradd -u 4000 -r -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" && \ 
-      && useradd -r -m \
+        useradd -r -m \
         -g $TS_USER \
         -d $TS_HOME \
         $TS_USER

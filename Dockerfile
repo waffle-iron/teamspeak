@@ -7,7 +7,7 @@ ENV   DEBIAN_FRONTEND noninteractive \
       TS_USER="teamspeak" \
 	  TS_GROUP="teamspeak" \
       TS_HOME="/teamspeak" \
-	  TS_DATA="/teamspeak/files
+	  TS_DATA="/teamspeak/files"
 
 
 ARG BUILD_DATE

@@ -23,11 +23,8 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
 RUN   apt-get update && apt-get install wget mysql-common bzip2 nano libreadline5 -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN   groupadd -g 4000 -r "$TS_GROUP" && \
-      useradd -u 4000 -r -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" && \ 
-        useradd -r -m \
-        -g $TS_USER \
-        -d $TS_HOME 
-        
+      useradd -u 4000 -r -m -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" 
+       
 
 WORKDIR ${TS_HOME}
 

@@ -46,7 +46,7 @@ RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh
 
 USER  ${TS_USER}
 
-VOLUME ["TS_DATA"]
+VOLUME {"TS_DATA"}
 
 EXPOSE 9987/udp
 EXPOSE 10011

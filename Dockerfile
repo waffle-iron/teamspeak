@@ -21,7 +21,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/asosgaming/docker-teamspeak.git" \
       org.label-schema.vcs-type="Git"
 
-RUN   apt-get update && apt-get install wget mysql-common bzip2 nano libreadline-common libreadline5 -y \
+RUN   apt-get update && apt-get install wget mysql-common bzip2 nano libreadline5 -y \
       && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN   groupadd -r $TS_USER \
       && useradd -r -m \

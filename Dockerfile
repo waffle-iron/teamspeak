@@ -41,7 +41,7 @@ RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
 
-RUN chmod 755 /entrypoing.sh && \
+RUN chmod 755 /entrypoint.sh && \
     chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && \
 	chmod +x /entrypoint.sh 
 	groupadd -g 4000 -r "$TS_GROUP" && \
@@ -52,7 +52,6 @@ USER  ${TS_USER}
 
 VOLUME {"TS_DATA"}
         
-
 EXPOSE 9987/udp
 EXPOSE 10011
 EXPOSE 30033

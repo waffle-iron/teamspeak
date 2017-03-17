@@ -26,8 +26,8 @@ RUN   groupadd -g 4000 -r "$TS_GROUP" && \
       useradd -u 4000 -r -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" && \ 
         useradd -r -m \
         -g $TS_USER \
-        -d $TS_HOME \
-        $TS_USER
+        -d $TS_HOME 
+        
 
 WORKDIR ${TS_HOME}
 

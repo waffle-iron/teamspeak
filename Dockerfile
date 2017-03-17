@@ -41,11 +41,17 @@ RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
 
-RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh 
+RUN chmod 755 /entrypoing.sh && \
+    chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && \
+	chmod +x /entrypoint.sh 
+	groupadd -g 4000 -r "$TS_GROUP" && \
+	useradd -u 4000 -r -g "$TS_GROUP" -d "$TS_HOME" "$TS_USER" && \ 
+	chown -fR "$TS3_USER":"$SINUS_GROUP" "$TS3_HOME" "$TS3_DATA"
 
 USER  ${TS_USER}
 
 VOLUME {"TS_DATA"}
+        
 
 EXPOSE 9987/udp
 EXPOSE 10011

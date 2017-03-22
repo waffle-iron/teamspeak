@@ -37,7 +37,11 @@ RUN  wget "http://dl.4players.de/ts/releases/${TS_VERSION}/${TS_FILENAME}-${TS_V
 
 RUN  cp "$(pwd)/redist/libmariadb.so.2" $(pwd)
 
+<<<<<<< HEAD
 ADD entrypoint.sh ${TS_HOME}/entrypoint.sh
+=======
+RUN chown -R ${TS3_USER}:${TS3_GROUP} ${TS3_HOME} && chmod u+x /entrypoint.sh && chmod u+x ${TS3_HOME}/entrypoint.sh
+>>>>>>> 7b81ba1... Changed Version to 1.0.0.4 with working configs for TS to connect to MySQL Server
 
 RUN chown -R ${TS_USER}:${TS_USER} ${TS_HOME} && chmod +x entrypoint.sh 
 	

@@ -1,38 +1,81 @@
-
-## Docker-Teamspeak
+docker-teamspeak
 ==================
-[![](https://images.microbadger.com/badges/image/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own commit badge on microbadger.com")
-[![](https://images.microbadger.com/badges/license/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own license badge on microbadger.com")
 
-## Current Version: [3.0.13.6](https://github.com/asosgaming/teamspeak/blob/master/Dockerfile)
-=======
-## ASoS Gaming TeamSpeak 3 Docker Image
+[![](https://images.microbadger.com/badges/image/solidnerd/teamspeak.svg)](http://microbadger.com/images/solidnerd/teamspeak "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/solidnerd/teamspeak.svg)](https://microbadger.com/images/solidnerd/teamspeak "Get your own commit badge on microbadger.com")
 
-Version 1.0.0.5
+## Current Version: [3.0.13.6](https://github.com/SolidNerd/docker-teamspeak/blob/master/Dockerfile)
 
-Docker container for the TeamSpeak 3 Server.
+## Introduction
 
-TeamSpeak 3 Homepage: https://www.teamspeak.com/teamspeak3.html
+A docker container to running a teamspeak server with a SQLite database or a MySQL/MariaDB Database.
 
+## Quickstart
 
-* Installation Instuctions
+Run the Teamspeak Server with a SQLite Database.
 
-*      More Information will be added later.
-      As of right now this image is built to use custom variables.
-      These variables must be set in your docker.compose file.   
-      If you do not use a docker-compose file this will not work for you
-      This build was made to be used with MariaDB or MySQL only
-      You may create a folder on your docker host at /storate/teamspeak and assign permissions to 4000:4000 (teamspeak:teamspeak)
-      Upload your backups and license keys to this directory on the docker host.
+```
+docker run -d --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.6
+```
 
+### Receiving Admin Token and Server Query Admin
 
-Instituting Changes to allow for Docker Image Tags in build environment.
-Completed Update of Teamspeak Server to latest version allowed for use with Sinusbot.
-Versioning added to match Sinusbot Versions. For best results make sure both versions are the same.
+To receive this information you need only to run:
+```
+docker logs teamspeak_server
+```
+Now you should see information like this:
 
-----------------------------------------------------------
+```
+------------------------------------------------------------------
+                      I M P O R T A N T
+------------------------------------------------------------------
+               Server Query Admin Account created
+         loginname= "serveradmin", password= "superSecret"
+------------------------------------------------------------------
+
+------------------------------------------------------------------
+                      I M P O R T A N T
+------------------------------------------------------------------
+      ServerAdmin privilege key created, please use it to gain
+      serveradmin rights for your virtualserver. please
+      also check the doc/privilegekey_guide.txt for details.
+
+       token=superSecret
+------------------------------------------------------------------
+
+```
+
+## Start the teamspeak server with a Database
+
+### Docker < v1.9
+
+1. MariaDB Container:
+```
+docker run -d --name="teamspeak-mysql" -p 3306:3306 -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=teamspeak -e MYSQL_USER=teamspeak -e MYSQL_PASSWORD=secret mariadb
+```
+2. Teamspeak Server Container :
+```
+docker run -d --name="teamspeak_server"  --env-file=.envfile -p "9987:9987/udp" -p 10011:10011 -p 30033:30033  --link teamspeak-mysql:mysql solidnerd/teamspeak:3.0.13.6
+```
+
+### Docker 1.9+
+1. Create a shared network: `docker network create teamspeak_nw`
+2. MariaDB container :
+
+   ```
+   docker run -d --net teamspeak_nw  \
+   -e MYSQL_ROOT_PASSWORD=secret \
+   -e MYSQL_DATABASE=teamspeak \
+   -e MYSQL_USER=teamspeak \
+   -e MYSQL_PASSWORD=secret \
+   --name="teamspeak-mysql" \
+   mariadb
+   ```
+3. Create Teamspeak Server Container :
+
+   ```
+   docker run -d --net teamspeak_nw --name="teamspeak_server" -p "9987:9987/udp" -p 10011:10011 -p 30033:30033 solidnerd/teamspeak:3.0.13.6
+   ```
 
 ## Available Environment Variables
 
@@ -66,5 +109,7 @@ Below is the complete list of available options that can be used to customize yo
 | `TS3_MARIADB_HOST` | Hostname of the DatabaseServer like localhost Default to  `Not Set`. |
 | `TS3_MARIADB_PORT` | DatabaseServer Port. Default to  `Not Set`.  |
 
+# LICENSE
+The MIT License (MIT)
 
-* License
+Copyright (c) 2016 Niclas Mietz

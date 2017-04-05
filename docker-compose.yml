@@ -1,10 +1,17 @@
 Teamspeak:
         restart: always
-        image: asos/teamspeak:latest
-        container_name: teamspeak_latest
+        image: asos/teamspeak:develop
+        container_name: teamspeak
         ports:
             - "9987:9987/udp"
             - "10011:10011"
             - "30033:30033"
         volumes:
-            - /storage/teamspeak:/data
+            - /storage/teamspeak:/teamspeak
+
+        environment:
+            - TS3_MARIADB_DB=
+            - TS3_MARIADB_USER=
+            - TS3_MARIADB_PASS=
+            - TS3_MARIADB_HOST=
+            - TS3_MARIADB_PORT=

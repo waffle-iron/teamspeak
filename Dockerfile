@@ -7,17 +7,19 @@ ENV TS3_USER=teamspeak \
     TS3_VERSION=3.0.13.6 \
     TS3_FILENAME=teamspeak3-server_linux_amd64 
 	
-    # Build-time metadata as defined at http://label-schema.org
+# Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
 ARG VCS_REF
+ARG VERSION
 LABEL org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.docker.dockerfile="/Dockerfile" \
-      org.label-schema.license="MIT" \
-      org.label-schema.name="Docker Teamspeak 3" \
-      org.label-schema.url="https://github.com/asosgaming/docker-teamspeak/" \
+      org.label-schema.name="ASoS Teamspeak 3 Docker" \
+      org.label-schema.description="A docker container for running a teamspeak server with a MySQL/MariaDB Database." \
+      org.label-schema.url="e.g. http://www.asosgaming.com/" \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/asosgaming/docker-teamspeak.git" \
-      org.label-schema.vcs-type="Git"
+      org.label-schema.vcs-url="https://github.com/asosgaming/docker-teamspeak" \
+      org.label-schema.vendor="ASoS Gaming Community" \
+      org.label-schema.version=$VERSION \
+      org.label-schema.schema-version="1.0"
 	
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh && \

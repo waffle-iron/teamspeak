@@ -1,16 +1,7 @@
-
-## Docker-Teamspeak
-==================
-[![](https://images.microbadger.com/badges/image/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own version badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own commit badge on microbadger.com")
-[![](https://images.microbadger.com/badges/license/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own license badge on microbadger.com")
-
-## Current Version: [3.0.13.6](https://github.com/asosgaming/teamspeak/blob/master/Dockerfile)
-=======
 ## ASoS Gaming TeamSpeak 3 Docker Image
 
-Version 1.0.0.5
+[![](https://images.microbadger.com/badges/version/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own image badge on microbadger.com")
 
 Docker container for the TeamSpeak 3 Server.
 
@@ -27,6 +18,7 @@ TeamSpeak 3 Homepage: https://www.teamspeak.com/teamspeak3.html
       You may create a folder on your docker host at /storate/teamspeak and assign permissions to 4000:4000 (teamspeak:teamspeak)
       Upload your backups and license keys to this directory on the docker host.
 
+------------------------UPDATES---------------------------
 
 Instituting Changes to allow for Docker Image Tags in build environment.
 Completed Update of Teamspeak Server to latest version allowed for use with Sinusbot.

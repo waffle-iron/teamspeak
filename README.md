@@ -1,5 +1,7 @@
 ## ASoS Gaming TeamSpeak 3 Docker Image
 
+## Current Version: [1.0.0.5](https://github.com/asosgaming/teamspeak/blob/master/Dockerfile)
+
 [![](https://images.microbadger.com/badges/version/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own version badge on microbadger.com")
 [![](https://images.microbadger.com/badges/image/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own image badge on microbadger.com")
 

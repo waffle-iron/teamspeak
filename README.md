@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/asosgaming/teamspeak.png?label=ready&title=Ready)](https://waffle.io/asosgaming/teamspeak)
 ## ASoS Gaming TeamSpeak 3 Docker Image
 
 ## Version: [1.0.0.5](https://github.com/asosgaming/teamspeak/blob/master/Dockerfile)

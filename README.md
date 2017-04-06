@@ -14,7 +14,7 @@ Docker container for the TeamSpeak 3 Server.
 TeamSpeak 3 Homepage: https://www.teamspeak.com/teamspeak3.html
 
 
-* Installation Instuctions
+* Installation Instructions
 
 *      More Information will be added later.
       As of right now this image is built to use custom variables.

@@ -8,6 +8,7 @@
 [![](https://images.microbadger.com/badges/image/asos/teamspeak.svg)](https://microbadger.com/images/asos/teamspeak "Get your own image badge on microbadger.com")
 [![Docker Automated build](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg?style=plastic)](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)
 [![Github Releases (by Release)](https://img.shields.io/github/downloads/atom/atom/v0.190.0/total.svg)](https://github.com/asosgaming/teamspeak/releases/tag/1.0.0.5)
+[![Stories in Ready](https://badge.waffle.io/asosgaming/sinusbot.png?label=ready&title=Ready)](http://waffle.io/asosgaming/sinusbot)
 
 Docker container for the TeamSpeak 3 Server.
 
